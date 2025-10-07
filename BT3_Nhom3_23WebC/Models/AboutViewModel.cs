@@ -1,12 +1,12 @@
-﻿namespace BT2_Nhom3_23WebC.Models
+﻿namespace BT3_Nhom3_23WebC.Models
 {
     public class AboutViewModel
     {
-        public string Title { get; set; }
-        public string Description { get; set; }
-        public List<string> Features { get; set; }
-        public string SubTitle { get; set; }
-        public string SubDescription { get; set; }
-        public string Blockquote { get; set; }
+        public required string Title { get; set; }//required dam bao thuoc tinh duoc gan gia tri truoc khi su dung, tranhs loi runtime
+        public required string Description { get; set; }
+        public required List<string> Features { get; set; }
+        public required string SubTitle { get; set; }
+        public required string SubDescription { get; set; }
+        public required string Blockquote { get; set; }
     }
 }

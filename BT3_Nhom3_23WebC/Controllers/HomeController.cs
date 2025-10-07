@@ -1,9 +1,9 @@
 using System.Diagnostics;
-using BT2_Nhom3_23WebC.Models;
+ 
 using BT3_Nhom3_23WebC.DAL;
 using Microsoft.AspNetCore.Mvc;
-
-namespace BT2_Nhom3_23WebC.Controllers
+using BT3_Nhom3_23WebC.Models;
+namespace BT3_Nhom3_23WebC.Controllers
 {
     public class HomeController : Controller
     {

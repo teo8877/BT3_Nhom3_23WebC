@@ -1,4 +1,4 @@
-﻿namespace BT2_Nhom3_23WebC.Models
+﻿namespace BT3_Nhom3_23WebC.Models
 {
     public class CheckoutViewModel
     {

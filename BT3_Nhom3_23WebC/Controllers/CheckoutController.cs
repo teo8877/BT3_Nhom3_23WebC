@@ -1,4 +1,4 @@
-﻿using BT2_Nhom3_23WebC.Models;
+﻿using BT3_Nhom3_23WebC.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BT2_Nhom3_23WebC.Controllers
@@ -11,7 +11,9 @@ namespace BT2_Nhom3_23WebC.Controllers
             // Lấy tổng tiền từ giỏ hàng thực tế
             var model = new CheckoutViewModel
             {
-                Total = 560 // Ví dụ cứng, thực tế lấy từ ShoppingCart
+                Total = 560, // Ví dụ cứng, thực tế lấy từ ShoppingCart
+               
+
             };
             return View(model);
         }

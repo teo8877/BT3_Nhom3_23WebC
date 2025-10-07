@@ -9,7 +9,8 @@ namespace BT3_Nhom3_23WebC.DAL
         //dung DI de lay connection string tu appsettings.json
         public ProductRepository(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection");//lay connection string tu appsettings.json voi key la DefaultConnection
+            _connectionString = configuration.GetConnectionString("DefaultConnection")
+                ?? throw new InvalidOperationException("Ket noi khong ton tai trong cau hinh.");
         }
         //lay tat ca san pham tu database
         public List<Product> GetAllProducts()

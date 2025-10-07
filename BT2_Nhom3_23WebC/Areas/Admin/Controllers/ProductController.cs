@@ -1,8 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using BT2_Nhom3_23WebC.Models;
+﻿using BT3_Nhom3_23WebC.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Text.Json;
 using BT3_Nhom3_23WebC.DAL;
-namespace BT2_Nhom3_23WebC.Areas.Admin.Controllers
+namespace BT3_Nhom3_23WebC.Areas.Admin.Controllers
 {
     public class ProductController : Controller
     {
@@ -33,17 +33,10 @@ namespace BT2_Nhom3_23WebC.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // Nếu dữ liệu không hợp lệ, trả lại view với thông báo lỗi
                 return View(product);
             }
             _productRepository.AddProduct(product);
-            // Chuyển về trang danh sách
             return RedirectToAction("Index");
         }
-    }
-
-    public class ProductDb
-    {
-        public List<Product> products { get; set; } = new List<Product>();
     }
 }

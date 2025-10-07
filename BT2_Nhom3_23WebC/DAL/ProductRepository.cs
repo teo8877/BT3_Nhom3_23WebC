@@ -1,5 +1,5 @@
-﻿using BT2_Nhom3_23WebC.Models;
- using Microsoft.Extensions.Configuration;
+﻿using BT3_Nhom3_23WebC.Models;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Data.SqlClient;
 namespace BT3_Nhom3_23WebC.DAL
 {

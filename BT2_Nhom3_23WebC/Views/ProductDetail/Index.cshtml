@@ -1,0 +1,45 @@
+﻿@model BT2_Nhom3_23WebC.Models.ProductDetailModel
+@{
+    ViewData["Title"] = "Product Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content" class="right">
+    <h2>@Model.Name</h2>
+    <div class="content_half left">
+        <a rel="lightbox" href="@Model.LargeImageUrl">
+            <img src="@Model.ImageUrl" alt="@Model.Name" />
+        </a>
+    </div>
+    <div class="content_half right">
+        <table>
+            <tr>
+                <td width="130">Price:</td>
+                <td width="84">$@Model.Price</td>
+            </tr>
+            <tr>
+                <td>Availability:</td>
+                <td><strong>@Model.Availability</strong></td>
+            </tr>
+            <tr>
+                <td>Quantity</td>
+                <td>
+                    <input type="text" value="@Model.Quantity" size="6" maxlength="2" />
+                </td>
+            </tr>
+        </table>
+        <div class="cleaner h20"></div>
+        <a href="shoppingcart.html" class="button">Add to Cart</a>
+    </div>
+    <div class="cleaner h40"></div>
+    <h4>Product Description</h4>
+    <p>@Model.Description</p>
+    <div class="cleaner h40"></div>
+    <div class="blank_box">
+        <a href="#"><img src="images/free_shipping.jpg" alt="Free Shipping" /></a>
+    </div>
+</div>
+<div class="cleaner"></div>
+
+ 
+
+

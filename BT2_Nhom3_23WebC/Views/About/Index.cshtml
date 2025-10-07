@@ -1,0 +1,26 @@
+﻿
+
+@model BT2_Nhom3_23WebC.Models.AboutViewModel
+
+@{
+    ViewData["Title"] = "About";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="content" class="right">
+    <h2>@Model.Title</h2>
+    <p>@Model.Description</p>
+    <ul class="tmo_list_circle">
+        @foreach (var feature in Model.Features)
+        {
+            <li>@feature</li>
+        }
+    </ul>
+    <div class="cleaner h20"></div>
+    <h3>@Model.SubTitle</h3>
+    <p>@Model.SubDescription</p>
+    <div class="cleaner"></div>
+    <blockquote>
+        @Model.Blockquote
+    </blockquote>
+</div>
+<div class="cleaner"></div>

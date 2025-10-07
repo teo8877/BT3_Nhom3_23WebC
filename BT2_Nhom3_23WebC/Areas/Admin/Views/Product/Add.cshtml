@@ -1,0 +1,53 @@
+﻿@model BT2_Nhom3_23WebC.Models.Product
+@{
+    ViewData["Title"] = "Thêm sản phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    // Danh sách hình ảnh mẫu
+    var imageList = new List<string> {
+        "images/product/01.jpg",
+        "images/product/02.jpg",
+        "images/product/03.jpg",
+        "images/product/04.jpg",
+        "images/product/05.jpg",
+        "images/product/06.jpg",
+        "images/product/07.jpg",
+        "images/product/08.jpg"
+    };
+}
+<h2>Thêm mới sản phẩm </h2>
+<form asp-action="Add" method="post">
+    <div>
+        <label>Mã sản phẩm</label>
+        <input asp-for="MaSP" name="MaSP" />
+    </div>
+    <div>
+        <label>Tên sản phẩm</label>
+        <input asp-for="TenSP" name="TenSP" />
+    </div>
+    <div>
+        <label>Đơn giá</label>
+        <input asp-for="DonGia" name="DonGia" type="number" step="0.01" />
+    </div>
+    <div>
+        <label>Đơn giá khuyến mãi</label>
+        <input asp-for="DonGiaKhuyenMai" name="DonGiaKhuyenMai" type="number" step="0.01" />
+    </div>
+    <div>
+        <label>Hình ảnh</label>
+        <select asp-for="HinhAnh" name="HinhAnh">
+            @foreach (var img in imageList)
+            {
+                <option value="@img">@img</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Mô tả</label>
+        <textarea asp-for="MoTa" name="MoTa"></textarea>
+    </div>
+    <div>
+        <label>Loại sản phẩm</label>
+        <input asp-for="LoaiSP" name="LoaiSP" />
+    </div>
+    <button type="submit">Thêm sản phẩm</button>
+</form>

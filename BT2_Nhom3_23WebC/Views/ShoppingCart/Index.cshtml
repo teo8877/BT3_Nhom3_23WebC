@@ -1,0 +1,50 @@
+﻿@model BT2_Nhom3_23WebC.Models.ShoppingCartViewModel
+@{
+    ViewData["Title"] = "Shopping Cart";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content" class="right">
+    <h2>Shopping Cart</h2>
+    <form method="post" action="/ShoppingCart/Update">
+        <table width="700" border="0" cellpadding="5" cellspacing="0">
+            <tr bgcolor="#395015">
+                <th width="168" align="left">Item</th>
+                <th width="188" align="left">Description</th>
+                <th width="60" align="center">Quantity</th>
+                <th width="80" align="right">Price</th>
+                <th width="80" align="right">Total</th>
+                <th width="64"></th>
+            </tr>
+            @for (int i = 0; i < Model.Items.Count; i++)
+            {
+                var item = Model.Items[i];
+                <tr bgcolor="#41581B">
+                    <td><img src="@item.ImageUrl" alt="@item.Name" /></td>
+                    <td>@Html.Raw(item.Description)</td>
+                    <td align="center">
+                        <input name="quantities[@i]" type="text" value="@item.Quantity" size="6" maxlength="2" />
+                    </td>
+                    <td align="right">$@item.Price</td>
+                    <td align="right">$@(item.Price* item.Quantity)</td>
+                    <td align="center">
+                        <a href="/ShoppingCart/Remove?index=@i"><img src="images/remove.png" alt="remove" /><br />Remove</a>
+                    </td>
+                </tr>
+            }
+            <tr bgcolor="#41581B">
+                <td colspan="3">Have you modified item quantities? Please <button type="submit"><strong>Update</strong></button> the Cart.&nbsp;&nbsp;</td>
+                <td align="right"><h4>All Total:</h4></td>
+                <td align="right"><h4>$@Model.Total</h4></td>
+                <td></td>
+            </tr>
+        </table>
+    </form>
+    <div class="cleaner h20"></div>
+    <div class="right"><a href="/Checkout" class="button">checkout</a></div>
+    <div class="cleaner h20"></div>
+    <div class="blank_box">
+        <a href="#"><img src="images/free_shipping.jpg" alt="Free Shipping" /></a>
+    </div>
+</div>
+<div class="cleaner"></div>

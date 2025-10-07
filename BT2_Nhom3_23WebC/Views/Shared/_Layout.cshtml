@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Floral Shop</title>
+
+    <!-- CSS -->
+    <link href="~/css/templatemo_style.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/orman.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/css/nivo-slider.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="~/css/ddsmoothmenu.css" rel="stylesheet" type="text/css" />
+    <link href="~/css/slimbox2.css" rel="stylesheet" type="text/css" media="screen" />
+
+    <!-- JS -->
+    <script src="~/js/jquery.min.js"></script>
+    <script src="~/js/jquery.nivo.slider.pack.js"></script>
+    <script src="~/js/ddsmoothmenu.js"></script>
+    <script src="~/js/slimbox2.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // CHỈ KHỞI TẠO SLIDER NẾU TRANG LÀ HOME
+            var path = window.location.pathname.toLowerCase();
+            var isHomePage = path === '/' || path === '/home' || path === '/home/index';
+
+            if (isHomePage && $('#slider').length) {
+                $('#slider').nivoSlider({
+                    controlNav: false,
+                    effect: 'fade',
+                    animSpeed: 500,
+                    pauseTime: 3000
+                });
+            }
+
+            // KHỞI TẠO MENU
+            ddsmoothmenu.init({
+                mainmenuid: "templatemo_menu",
+                orientation: 'h',
+                classname: 'ddsmoothmenu',
+                contentsource: "markup"
+            });
+        });
+
+        function clearText(field) {
+            if (field.defaultValue == field.value) field.value = '';
+            else if (field.value == '') field.value = field.defaultValue;
+        }</script>
+</head>
+
+@{
+        var isHomePage = ViewContext.RouteData.Values["action"]?.ToString() == "Index"
+                                        && ViewContext.RouteData.Values["controller"]?.ToString() == "Home";
+}
+
+<body class="@(isHomePage ? "" : "no-slider subpage")">
+    <div id="templatemo_wrapper_sp">
+        @Html.Partial("_Header")
+
+        <div id="templatemo_main_wrapper">
+            <div id="templatemo_main">
+                @Html.Partial("_Sidebar")
+                <div id="content" class="right">
+                    @RenderBody()
+                    <div class="blank_box">
+                        <a href="#"><img src="images/free_shipping.jpg" alt="Free Shipping" /></a>
+                    </div>
+                </div>
+                <div class="cleaner"></div>
+            </div>
+        </div>
+        
+        @Html.Partial("_Footer")
+    </div>
+</body>
+</html>

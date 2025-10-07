@@ -1,0 +1,42 @@
+﻿@model BT2_Nhom3_23WebC.Models.CheckoutViewModel
+@{
+    ViewData["Title"] = "Checkout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="content" class="right">
+    <h2>Checkout</h2>
+    <form asp-action="Index" method="post">
+        <h3>BILLING DETAILS</h3>
+        <div class="content_half left form_field">
+            Full Name (must be the same as on credit card)
+            <input asp-for="FullName" maxlength="40" />
+            Address:
+            <input asp-for="Address" maxlength="40" />
+            City:
+            <input asp-for="City" maxlength="40" />
+            Country:
+            <input asp-for="Country" maxlength="40" />
+        </div>
+        <div class="content_half right form_field">
+            Email:
+            <input asp-for="Email" maxlength="40" />
+            Phone:<br />
+            <input asp-for="Phone" maxlength="40" />
+            <span>Please, specify your reachable phone number to call you for a verification.</span>
+        </div>
+        <div class="cleaner h40"></div>
+        <h3>SHOPPING CART</h3>
+        <h4>TOTAL: <strong>$@Model.Total</strong></h4>
+        <p>
+            <input asp-for="TermsAccepted" type="checkbox" />
+            I have read and accept the <a href="#">Terms of Use</a>.
+            @Html.ValidationMessageFor(m => m.TermsAccepted)
+        </p>
+        <p><a href="#"><img src="images/1311260370_paypal-straight.png" alt="paypal" align="middle" /></a>&nbsp;(recommended if you have a PayPal account. Fastest way to complete your order.)</p>
+        <p><a href="#"><img src="images/flagship.jpg" alt="Flagship" align="middle" /></a>&nbsp;(free shipping for orders above $500)</p>
+      
+        <button type="submit" class="button">Submit Order</button>
+    </form>
+</div>
+<div class="cleaner"></div>

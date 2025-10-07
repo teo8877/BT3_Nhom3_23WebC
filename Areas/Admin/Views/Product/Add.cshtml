@@ -1,0 +1,53 @@
+@model BT2_Nhom3_23WebC.Models.Product
+@{
+    ViewData["Title"] = "Thêm s?n ph?m";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+    // Danh sách hình ?nh m?u
+    var imageList = new List<string> {
+        "images/product/01.jpg",
+        "images/product/02.jpg",
+        "images/product/03.jpg",
+        "images/product/04.jpg",
+        "images/product/05.jpg",
+        "images/product/06.jpg",
+        "images/product/07.jpg",
+        "images/product/08.jpg"
+    };
+}
+<h2>Thêm m?i s?n ph?m </h2>
+<form asp-action="Add" method="post">
+    <div>
+        <label>Mã s?n ph?m</label>
+        <input asp-for="MaSP" name="MaSP" />
+    </div>
+    <div>
+        <label>Tên s?n ph?m</label>
+        <input asp-for="TenSP" name="TenSP" />
+    </div>
+    <div>
+        <label>??n giá</label>
+        <input asp-for="DonGia" name="DonGia" type="number" step="0.01" />
+    </div>
+    <div>
+        <label>??n giá khuy?n mãi</label>
+        <input asp-for="DonGiaKhuyenMai" name="DonGiaKhuyenMai" type="number" step="0.01" />
+    </div>
+    <div>
+        <label>Hình ?nh</label>
+        <select asp-for="HinhAnh" name="HinhAnh">
+            @foreach (var img in imageList)
+            {
+                <option value="@img">@img</option>
+            }
+        </select>
+    </div>
+    <div>
+        <label>Mô t?</label>
+        <textarea asp-for="MoTa" name="MoTa"></textarea>
+    </div>
+    <div>
+        <label>Lo?i s?n ph?m</label>
+        <input asp-for="LoaiSP" name="LoaiSP" />
+    </div>
+    <button type="submit">Thêm s?n ph?m</button>
+</form>

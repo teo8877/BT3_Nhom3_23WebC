@@ -1,0 +1,79 @@
+﻿<div id="templatemo_wrapper_h">
+    <div id="templatemo_header_wh">
+        <div id="templatemo_header" class="header_home">
+            <div id="site_title"><a href="#">Floral Shop</a></div>
+            <div id="templatemo_menu" class="ddsmoothmenu">
+                <ul>
+                     
+                    <li><a href="@Url.Action("Index", "Home")">Home</a></li>
+                    <li><a href="@Url.Action("Index", "About")">About</a></li>
+                    <li>
+                        <a href="@Url.Action("Index", "Product")">Products</a>
+                        <ul>
+                            <li><a href="#subpage1">Sub Page One</a></li>
+                            <li><a href="#subpage2">Sub Page Two</a></li>
+                            <li><a href="#subpage3">Sub Page Three</a></li>
+                            <li><a href="#subpage4">Sub Page Four</a></li>
+                            <li><a href="#subpage5">Sub Page Five</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="@Url.Action("Index", "Checkout")">Checkout</a></li>
+                    <li><a href="@Url.Action("Index", "Contact")">Contact</a></li>
+                    <li><a href="@Url.Action("Index", "FAQs")">FAQs</a></li>
+                </ul>
+                <div id="templatemo_search">
+                    <form action="#" method="get">
+                        <input type="text" value="Site Search" name="keyword" id="keyword" title="keyword"
+                               onfocus="clearText(this)" onblur="clearText(this)" class="txt_field" />
+                        <input type="submit" name="Search" value="" alt="Search" id="searchbutton" title="Search" class="sub_btn" />
+                    </form>
+                </div>
+
+                <!-- btn giỏ hàng  -->
+                <div id="templatemo_cart" style="float:right; margin-right:15px;">
+                    <a href="@Url.Action("Index", "ShoppingCart")" class="btn btn-cart">
+                        <span class="cart-icon">&#128722;</span> <!-- Unicode cart icon -->
+                 
+                        @if (ViewBag.CartItemCount != null && (int)ViewBag.CartItemCount > 0)
+                        {
+                            <span class="cart-count">(@ViewBag.CartItemCount)</span>
+                        }
+                    </a>
+                </div>
+
+                <br style="clear: left" />
+            </div> <!-- end of templatemo_menu -->
+            @{
+                var isHomePage = ViewBag.PageName == "Home";
+            }
+            @if (isHomePage){
+            <div class="slider-wrapper theme-orman">
+                <div class="ribbon"></div>
+                <div id="slider" class="nivoSlider">
+                    <img src="/images/portfolio/01.jpg" alt="slider image 1" />
+                    <a href="#">
+                        <img src="/images/portfolio/02.jpg" alt="slider image 2" title="This is an example of a caption" />
+                    </a>
+                    <img src="/images/portfolio/03.jpg" alt="slider image 3" />
+                    <img src="/images/portfolio/04.jpg" alt="slider image 4" title="#htmlcaption" />
+                    <img src="/images/portfolio/05.jpg" alt="slider image 5" title="#htmlcaption" />
+                </div>
+                <div id="htmlcaption" class="nivo-html-caption">
+                    <strong>Example</strong> caption with <a href="http://dev7studios.com" rel="nofollow">a credit link</a> for <em>this slider</em>.
+                </div>
+            </div>
+            <script type="text/javascript" src="/js/jquery-1.6.1.min.js"></script>
+            <script type="text/javascript" src="/js/jquery.nivo.slider.pack.js"></script>
+            <script type="text/javascript">
+                $(window).load(function() {
+                    $('#slider').nivoSlider({
+                        controlNav:false
+                    });
+                });
+            </script>
+            }
+            <!-- Ẩn text của site search -->
+            
+        </div> <!-- END of header -->
+    </div> <!-- END of header wrapper -->
+</div>

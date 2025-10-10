@@ -9,10 +9,10 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 
 //cau hình session (dang nhap)
-builder.Services.AddSession();
+builder.Services.AddSession();  
 //DI cho UserRepository
 builder.Services.AddScoped<UserRepository>();
-
+builder.Services.AddHttpContextAccessor();//cho phep truy cap HttpContext trong cac lop khong phai controller
 // Packge: SqlServer, Tools, Gió lõi 
 //create csdl: Tao Migration(kich ban DB) Add.Migration InitialCreate, Apply: Update-Database
 // Add services to the container.
@@ -37,7 +37,7 @@ if (!app.Environment.IsDevelopment())
 //cau hinh session
 app.UseSession();
 
-
+app.UseAuthorization();//xac thuc
 app.UseHttpsRedirection();
 app.UseStaticFiles();// For the wwwroot folder
 app.UseRouting();

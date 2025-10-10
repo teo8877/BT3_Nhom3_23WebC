@@ -6,5 +6,26 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <h3>Trang quan ly san pham</h3>
+
+@model List<BT3_Nhom3_23WebC.Models.Product>
+<div id="content" class="right">
+    <h2>Products</h2>
+    @foreach (var sp in Model)
+    {
+        <div class="product_box">
+            <img src="@sp.HinhAnh" alt="@sp.TenSP" />
+            <h3>@sp.TenSP (@sp.MaSP)</h3>
+            <p class="product_price">Giá: @sp.DonGia - KM: @sp.DonGiaKhuyenMai</p>
+            <p>@sp.MoTa</p>
+            <p>Loại: @sp.LoaiSP</p>
+            <p class="add_to_cart">
+                <a href="@Url.Action("Index", "ProductDetail")">Chi tiết</a>
+                <a href="@Url.Action("Index", "ShoppingCart")">Thêm vào giỏ</a>
+            </p>
+        </div>
+    }
+
+</div>
+
 <a href="@Url.Action("Add","Product")">Thêm sản phẩm </a><br>
 

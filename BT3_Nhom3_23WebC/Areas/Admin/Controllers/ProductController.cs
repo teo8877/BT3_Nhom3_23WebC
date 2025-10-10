@@ -1,9 +1,11 @@
 ﻿using BT3_Nhom3_23WebC.Models;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using BT3_Nhom3_23WebC.DAL;
+
 namespace BT3_Nhom3_23WebC.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class ProductController : Controller
     {
         private readonly ProductRepository _productRepository;
@@ -13,29 +15,39 @@ namespace BT3_Nhom3_23WebC.Areas.Admin.Controllers
             _productRepository = productRepository;
         }
 
-        [Area("Admin")]
         public IActionResult Index()
         {
             ViewData["Title"] = "Admin Product Page";
-            var products=_productRepository.GetAllProducts();
+            var products = _productRepository.GetAllProducts();
             return View(products);
         }
 
-        [Area("Admin")]
         [HttpGet]
         public IActionResult Add()
         {
+            ViewBag.Categories = _productRepository.GetAllDanhMuc()
+                .Select(d => new SelectListItem
+                {
+                    Value = d.MaDM.ToString(),
+                    Text = d.TenDM
+                }).ToList();
+
             return View();
         }
 
-        [Area("Admin")]
         [HttpPost]
-        public IActionResult Add(Product product)
+        public IActionResult Add(Products product)
         {
+            ViewBag.Categories = _productRepository.GetAllDanhMuc()
+                .Select(d => new SelectListItem
+                {
+                    Value = d.MaDM.ToString(),
+                    Text = d.TenDM
+                }).ToList();
+
             if (!ModelState.IsValid)
-            {
                 return View(product);
-            }
+
             _productRepository.AddProduct(product);
             return RedirectToAction("Index");
         }

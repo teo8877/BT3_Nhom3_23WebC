@@ -20,8 +20,7 @@ namespace BT3_Nhom3_23WebC.Controllers
         public IActionResult Index()
         {
             ViewBag.PageName = "Home";
-            var products= _productRepository.GetAllProducts();
-            return View(products);
+            return View(_productRepository.GetAllProducts());
         }
       
         public IActionResult Privacy()

@@ -1,4 +1,7 @@
-﻿<div id="templatemo_wrapper_h">
+﻿@{
+    var role = ViewBag.Role as string;
+}
+<div id="templatemo_wrapper_h">
     <div id="templatemo_header_wh">
         <div id="templatemo_header" class="header_home">
             <div id="site_title"><a href="#">Floral Shop</a></div>
@@ -20,6 +23,15 @@
                     <li><a href="@Url.Action("Index", "Checkout")">Checkout</a></li>
                     <li><a href="@Url.Action("Index", "Contact")">Contact</a></li>
                     <li><a href="@Url.Action("Index", "FAQs")">FAQs</a></li>
+                   
+                   
+                    <li><a href="@Url.Action("Index", "Login")">Login</a></li>
+                    @if(role == "Admin")
+                    {
+                        <li><a href="@Url.Action("Add", "Product", new { area = "Admin" })">Product add</a></li>
+                    }
+
+                    
                 </ul>
                 <div id="templatemo_search">
                     <form action="#" method="get">

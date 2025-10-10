@@ -1,0 +1,13 @@
+﻿@model BT3_Nhom3_23WebC.Models.UsersModel
+@{
+    ViewData["Title"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form method="post">
+    <input type="text" name="username" placeholder="Tên đăng nhập" required />
+    <input type="password" name="password" placeholder="Mật khẩu" required />
+    <button type="submit">Đăng nhập</button>
+    <span style="color:red">@ViewBag.ErrorMessage</span>
+</form>
+ 

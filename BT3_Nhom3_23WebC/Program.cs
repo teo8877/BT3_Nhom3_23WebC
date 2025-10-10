@@ -1,15 +1,18 @@
 ﻿using BT3_Nhom3_23WebC.Models;
  
 using BT3_Nhom3_23WebC.DAL;
-using BT2_Nhom3_23WebC.Middleware; // Thêm namespace Middleware
+  // Thêm namespace Middleware
 
 var builder = WebApplication.CreateBuilder(args);
 
 //lấy chuối kết nối từ file appsettings.json
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
-    
- 
- 
+
+//cau hình session (dang nhap)
+builder.Services.AddSession();
+//DI cho UserRepository
+builder.Services.AddScoped<UserRepository>();
+
 // Packge: SqlServer, Tools, Gió lõi 
 //create csdl: Tao Migration(kich ban DB) Add.Migration InitialCreate, Apply: Update-Database
 // Add services to the container.
@@ -29,7 +32,11 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-app.UseMiddleware<RequestLogMiddleware>(); // Đăng ký middleware ghi log
+//app.UseMiddleware<RequestLogMiddleware>(); // Đăng ký middleware ghi log
+
+//cau hinh session
+app.UseSession();
+
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();// For the wwwroot folder

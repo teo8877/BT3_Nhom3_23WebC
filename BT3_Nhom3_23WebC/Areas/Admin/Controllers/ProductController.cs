@@ -37,7 +37,7 @@ namespace BT3_Nhom3_23WebC.Areas.Admin.Controllers
 
         
         [HttpPost]
-        public IActionResult Add(Product product, int? NewMaDM, string NewCategoryName)
+        public IActionResult Add(Products product, int? NewMaDM, string NewCategoryName)
         {
             ViewBag.Categories = _productRepository.GetAllDanhMuc()
                 .Select(d => new SelectListItem

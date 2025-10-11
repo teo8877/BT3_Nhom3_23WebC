@@ -1,17 +1,12 @@
-﻿@model BT3_Nhom3_23WebC.Models.Product
+﻿@model BT3_Nhom3_23WebC.Models.Products
 
 @{
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Thêm sản phẩm";
-<<<<<<< HEAD
+ 
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 
     var imageList = new List<string> {
-=======
-
-    var imageList = new List<string>
-    {
->>>>>>> origin/mnhat
         "/images/product/01.jpg",
         "/images/product/02.jpg",
         "/images/product/03.jpg",
@@ -23,72 +18,8 @@
     };
 }
 
-<h2>Thêm mới sản phẩm</h2>
 
-<<<<<<< HEAD
-<!-- Hiển thị lỗi tổng hợp -->
-<div asp-validation-summary="ModelOnly" style="color:red"></div>
-
-<form asp-action="Add" method="post">
-    <div>
-        <label asp-for="MaSP"></label><br />
-        <input asp-for="MaSP" />
-        <span asp-validation-for="MaSP" style="color:red"></span>
-    </div>
-
-    <div>
-        <label asp-for="TenSP"></label><br />
-        <input asp-for="TenSP" />
-        <span asp-validation-for="TenSP" style="color:red"></span>
-    </div>
-
-    <div>
-        <label asp-for="DonGia"></label><br />
-        <input asp-for="DonGia" type="number" step="1" />
-        <span asp-validation-for="DonGia" style="color:red"></span>
-    </div>
-
-    <div>
-        <label asp-for="DonGiaKhuyenMai"></label><br />
-        <input asp-for="DonGiaKhuyenMai" type="number" step="1" />
-        <span asp-validation-for="DonGiaKhuyenMai" style="color:red"></span>
-    </div>
-
-    <div>
-        <label asp-for="HinhAnh"></label><br />
-        <select asp-for="HinhAnh">
-            <option value="">-- Chọn hình ảnh --</option>
-            @foreach (var img in imageList)
-            {
-                <option value="@img">@img</option>
-            }
-        </select>
-        <span asp-validation-for="HinhAnh" style="color:red"></span>
-    </div>
-
-    <div>
-        <label asp-for="MoTa"></label><br />
-        <textarea asp-for="MoTa"></textarea>
-        <span asp-validation-for="MoTa" style="color:red"></span>
-    </div>
-
-    <div>
-        <label asp-for="LoaiSP"></label><br />
-        <input asp-for="LoaiSP" />
-        <span asp-validation-for="LoaiSP" style="color:red"></span>
-    </div>
-
-    <button type="submit">Thêm sản phẩm</button>
-</form>
-
-<br />
-<a href="@Url.Action("Index", "Product")">Quay về trang quản lý sản phẩm</a>
-
-@section Scripts {
-    <partial name="_ValidationScriptsPartial" />
-}
-
-=======
+ 
 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
 
 <form asp-action="Add" method="post">
@@ -162,4 +93,4 @@
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
 }
->>>>>>> origin/mnhat
+ 

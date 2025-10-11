@@ -2,7 +2,7 @@
 
 namespace BT3_Nhom3_23WebC.Models
 {
-    public class Product
+    public class Products
     {
         [Key]
         [Required(ErrorMessage = "Mã sản phẩm không được để trống")]

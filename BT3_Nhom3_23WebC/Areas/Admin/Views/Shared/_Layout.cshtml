@@ -1,19 +1,21 @@
-﻿<!DOCTYPE html  >
-    <head>
-        <meta charset="utf-8"/>
-
-        <title>@ViewData["Title"] -Admin</title>
-        <link href="~/css/templatemo_style.css" rel="stylesheet" />
-        <link href="~/css/site.css" rel="stylesheet" />
- 
-    </head>
-    <body>
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - Admin</title>
+    <link href="~/css/templatemo_style.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+</head>
+<body>
     <div class="admin-header">
         <h2>Admin Panel</h2>
     </div>
+
     <div class="admin-content">
         @RenderBody()
-         
     </div>
-    </body>
+
+    <!-- Phải nằm TRƯỚC thẻ đóng body -->
+    @RenderSection("Scripts", required: false)
+</body>
 </html>

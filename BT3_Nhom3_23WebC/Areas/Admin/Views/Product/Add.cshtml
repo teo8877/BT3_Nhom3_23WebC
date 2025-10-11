@@ -1,54 +1,81 @@
 ﻿@model BT3_Nhom3_23WebC.Models.Product
+
 @{
     ViewData["Title"] = "Thêm sản phẩm";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-    // Danh sách hình ảnh mẫu
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
     var imageList = new List<string> {
-        "images/product/01.jpg",
-        "images/product/02.jpg",
-        "images/product/03.jpg",
-        "images/product/04.jpg",
-        "images/product/05.jpg",
-        "images/product/06.jpg",
-        "images/product/07.jpg",
-        "images/product/08.jpg"
+        "/images/product/01.jpg",
+        "/images/product/02.jpg",
+        "/images/product/03.jpg",
+        "/images/product/04.jpg",
+        "/images/product/05.jpg",
+        "/images/product/06.jpg",
+        "/images/product/07.jpg",
+        "/images/product/08.jpg"
     };
 }
-<h2>Thêm mới sản phẩm </h2>
+
+<h2>Thêm mới sản phẩm</h2>
+
+<!-- Hiển thị lỗi tổng hợp -->
+<div asp-validation-summary="ModelOnly" style="color:red"></div>
+
 <form asp-action="Add" method="post">
     <div>
-        <label>Mã sản phẩm</label>
-        <input asp-for="MaSP" name="MaSP" />
+        <label asp-for="MaSP"></label><br />
+        <input asp-for="MaSP" />
+        <span asp-validation-for="MaSP" style="color:red"></span>
     </div>
+
     <div>
-        <label>Tên sản phẩm</label>
-        <input asp-for="TenSP" name="TenSP" />
+        <label asp-for="TenSP"></label><br />
+        <input asp-for="TenSP" />
+        <span asp-validation-for="TenSP" style="color:red"></span>
     </div>
+
     <div>
-        <label>Đơn giá</label>
-        <input asp-for="DonGia" name="DonGia" type="number" step="0.01" />
+        <label asp-for="DonGia"></label><br />
+        <input asp-for="DonGia" type="number" step="1" />
+        <span asp-validation-for="DonGia" style="color:red"></span>
     </div>
+
     <div>
-        <label>Đơn giá khuyến mãi</label>
-        <input asp-for="DonGiaKhuyenMai" name="DonGiaKhuyenMai" type="number" step="0.01" />
+        <label asp-for="DonGiaKhuyenMai"></label><br />
+        <input asp-for="DonGiaKhuyenMai" type="number" step="1" />
+        <span asp-validation-for="DonGiaKhuyenMai" style="color:red"></span>
     </div>
+
     <div>
-        <label>Hình ảnh</label>
-        <select asp-for="HinhAnh" name="HinhAnh">
+        <label asp-for="HinhAnh"></label><br />
+        <select asp-for="HinhAnh">
+            <option value="">-- Chọn hình ảnh --</option>
             @foreach (var img in imageList)
             {
                 <option value="@img">@img</option>
             }
         </select>
+        <span asp-validation-for="HinhAnh" style="color:red"></span>
     </div>
+
     <div>
-        <label>Mô tả</label>
-        <textarea asp-for="MoTa" name="MoTa"></textarea>
+        <label asp-for="MoTa"></label><br />
+        <textarea asp-for="MoTa"></textarea>
+        <span asp-validation-for="MoTa" style="color:red"></span>
     </div>
+
     <div>
-        <label>Loại sản phẩm</label>
-        <input asp-for="LoaiSP" name="LoaiSP" />
+        <label asp-for="LoaiSP"></label><br />
+        <input asp-for="LoaiSP" />
+        <span asp-validation-for="LoaiSP" style="color:red"></span>
     </div>
+
     <button type="submit">Thêm sản phẩm</button>
 </form>
-<a href="@Url.Action("Index", "Product")">Quay về trang quản lý sản phẩm </a>
+
+<br />
+<a href="@Url.Action("Index", "Product")">Quay về trang quản lý sản phẩm</a>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

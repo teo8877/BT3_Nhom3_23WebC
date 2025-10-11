@@ -17,7 +17,7 @@ namespace BT3_Nhom3_23WebC.Areas.Admin.Controllers
         public IActionResult Index()
         {
             ViewData["Title"] = "Admin Product Page";
-            var products=_productRepository.GetAllProducts();
+            var products = _productRepository.GetAllProducts();
             return View(products);
         }
 

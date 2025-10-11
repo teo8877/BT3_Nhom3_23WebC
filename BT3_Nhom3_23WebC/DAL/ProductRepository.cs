@@ -18,11 +18,11 @@ public class ProductRepository
         var products = new List<Product>();
         string sql = "SELECT MaSP, TenSP, DonGia, DonGiaKhuyenMai, HinhAnh, MoTa, LoaiSP, MaDM FROM Products";
 
-        using (SqlConnection conn = new SqlConnection(_connectionString))
-        using (SqlCommand cmd = new SqlCommand(sql, conn))
+        using (var conn = new SqlConnection(_connectionString))
+        using (var cmd = new SqlCommand(sql, conn))
         {
             conn.Open();
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            using (var reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
@@ -44,27 +44,54 @@ public class ProductRepository
     }
 
     // Thêm sản phẩm
-    public void AddProduct(Product product)
+    public bool AddProduct(Product product, out string errorMessage)
     {
-        string sql = @"INSERT INTO Products
-                   (MaSP, TenSP, DonGia, DonGiaKhuyenMai, HinhAnh, MoTa, LoaiSP, MaDM)
-                   VALUES
-                   (@MaSP, @TenSP, @DonGia, @DonGiaKhuyenMai, @HinhAnh, @MoTa, @LoaiSP, @MaDM)";
-
-        using (SqlConnection conn = new SqlConnection(_connectionString))
-        using (SqlCommand cmd = new SqlCommand(sql, conn))
+        errorMessage = "";
+        try
         {
-            cmd.Parameters.AddWithValue("@MaSP", product.MaSP);
-            cmd.Parameters.AddWithValue("@TenSP", product.TenSP);
-            cmd.Parameters.AddWithValue("@DonGia", product.DonGia);
-            cmd.Parameters.AddWithValue("@DonGiaKhuyenMai", product.DonGiaKhuyenMai);
-            cmd.Parameters.AddWithValue("@HinhAnh", product.HinhAnh);
-            cmd.Parameters.AddWithValue("@MoTa", product.MoTa);
-            cmd.Parameters.AddWithValue("@LoaiSP", product.LoaiSP); // ✅ sửa đúng
-            cmd.Parameters.AddWithValue("@MaDM", product.MaDM);
+            if (product == null)
+            {
+                errorMessage = "Product null.";
+                return false;
+            }
 
-            conn.Open();
-            cmd.ExecuteNonQuery();
+            string sql = @"INSERT INTO Products
+                       (MaSP, TenSP, DonGia, DonGiaKhuyenMai, HinhAnh, MoTa, LoaiSP, MaDM)
+                       VALUES
+                       (@MaSP, @TenSP, @DonGia, @DonGiaKhuyenMai, @HinhAnh, @MoTa, @LoaiSP, @MaDM)";
+
+            using (var conn = new SqlConnection(_connectionString))
+            using (var cmd = new SqlCommand(sql, conn))
+            {
+                cmd.Parameters.AddWithValue("@MaSP", product.MaSP ?? "");
+                cmd.Parameters.AddWithValue("@TenSP", product.TenSP ?? "");
+                cmd.Parameters.AddWithValue("@DonGia", product.DonGia);
+                cmd.Parameters.AddWithValue("@DonGiaKhuyenMai", product.DonGiaKhuyenMai);
+                cmd.Parameters.AddWithValue("@HinhAnh", product.HinhAnh ?? "");
+                cmd.Parameters.AddWithValue("@MoTa", product.MoTa ?? "");
+                cmd.Parameters.AddWithValue("@LoaiSP", product.LoaiSP ?? "");
+                cmd.Parameters.AddWithValue("@MaDM", product.MaDM);
+
+                conn.Open();
+                int rowsAffected = cmd.ExecuteNonQuery();
+                if (rowsAffected == 0)
+                {
+                    errorMessage = "Không thêm được sản phẩm, rowsAffected = 0.";
+                    return false;
+                }
+            }
+
+            return true;
+        }
+        catch (SqlException ex)
+        {
+            errorMessage = $"Lỗi SQL: {ex.Message}";
+            return false;
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Lỗi: {ex.Message}";
+            return false;
         }
     }
 
@@ -75,11 +102,11 @@ public class ProductRepository
         var danhMucs = new List<DanhMuc>();
         string sql = "SELECT MaDM, TenDM FROM DanhMuc";
 
-        using (SqlConnection conn = new SqlConnection(_connectionString))
-        using (SqlCommand cmd = new SqlCommand(sql, conn))
+        using (var conn = new SqlConnection(_connectionString))
+        using (var cmd = new SqlCommand(sql, conn))
         {
             conn.Open();
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            using (var reader = cmd.ExecuteReader())
             {
                 while (reader.Read())
                 {
@@ -93,4 +120,6 @@ public class ProductRepository
         }
         return danhMucs;
     }
+
+
 }

@@ -46,13 +46,12 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="HinhAnh" class="form-label">Hình ảnh</label>
+        <label asp-for="HinhAnh" class="form-label"></label>
         <select asp-for="HinhAnh" class="form-control">
             <option value="">-- Chọn hình ảnh --</option>
-            @foreach (var img in imageList)
-            {
-                <option value="@img">@img</option>
-            }
+            <option value="/images/product/01.jpg">01.jpg</option>
+            <option value="/images/product/02.jpg">02.jpg</option>
+            <option value="/images/product/03.jpg">03.jpg</option>
         </select>
         <span asp-validation-for="HinhAnh" class="text-danger"></span>
     </div>
@@ -64,17 +63,26 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="MaDM" class="form-label">Danh mục</label>
+        <label asp-for="LoaiSP" class="form-label"></label>
+        <input asp-for="LoaiSP" class="form-control" />
+        <span asp-validation-for="LoaiSP" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MaDM" class="form-label"></label>
         <select asp-for="MaDM" asp-items="ViewBag.Categories" class="form-control">
             <option value="">-- Chọn danh mục --</option>
         </select>
         <span asp-validation-for="MaDM" class="text-danger"></span>
     </div>
+    <div class="mb-3">
+        <label class="form-label">Danh mục mới (nếu chưa có)</label>
+        <input type="text" name="NewCategory" class="form-control" placeholder="Nhập tên danh mục mới" />
+    </div>
+
 
     <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
 </form>
-
-<a asp-action="Index" class="btn btn-secondary mt-3">Quay về trang quản lý sản phẩm</a>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

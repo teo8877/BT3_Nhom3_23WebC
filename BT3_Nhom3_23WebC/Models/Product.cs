@@ -6,7 +6,7 @@ namespace BT3_Nhom3_23WebC.Models
     {
         [Key]
         [Required(ErrorMessage = "Mã sản phẩm không được để trống")]
-        [StringLength(20, ErrorMessage = "Mã sản phẩm tối đa 20 ký tự")]
+        [StringLength(10, ErrorMessage = "Mã sản phẩm tối đa 10 ký tự")]
         public string MaSP { get; set; }
 
         [Required(ErrorMessage = "Tên sản phẩm không được để trống")]
@@ -21,11 +21,11 @@ namespace BT3_Nhom3_23WebC.Models
         public int DonGiaKhuyenMai { get; set; }
 
         [Required(ErrorMessage = "Hình ảnh không được để trống")]
-        [StringLength(255, ErrorMessage = "Đường dẫn hình ảnh tối đa 255 ký tự")]
+        [StringLength(200, ErrorMessage = "Đường dẫn hình ảnh tối đa 200 ký tự")]
         public string HinhAnh { get; set; }
 
         [Required(ErrorMessage = "Mô tả không được để trống")]
-        [StringLength(1000, ErrorMessage = "Mô tả tối đa 1000 ký tự")]
+        [StringLength(500, ErrorMessage = "Mô tả tối đa 500 ký tự")]
         public string MoTa { get; set; }
 
         [Required(ErrorMessage = "Loại sản phẩm không được để trống")]

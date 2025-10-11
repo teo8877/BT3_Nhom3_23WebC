@@ -35,34 +35,7 @@ namespace BT3_Nhom3_23WebC.Areas.Admin.Controllers
             return View();
         }
 
-        [HttpPost]
-        //public IActionResult Add(Product product)
-        //{
-        //    ViewBag.Categories = _productRepository.GetAllDanhMuc()
-        //        .Select(d => new SelectListItem
-        //        {
-        //            Value = d.MaDM.ToString(),
-        //            Text = d.TenDM
-        //        }).ToList();
-
-        //    // Debug ModelState
-        //    if (!ModelState.IsValid)
-        //    {
-        //        var errors = ModelState.Values.SelectMany(v => v.Errors)
-        //                      .Select(e => e.ErrorMessage).ToList();
-        //        ModelState.AddModelError("", "Lỗi validate: " + string.Join(", ", errors));
-        //        return View(product);
-        //    }
-
-        //    // Thêm sản phẩm
-        //    if (!_productRepository.AddProduct(product, out string errorMessage))
-        //    {
-        //        ModelState.AddModelError("", "Thêm thất bại: " + errorMessage);
-        //        return View(product);
-        //    }
-
-        //    return RedirectToAction("Index");
-        //}
+        
         [HttpPost]
         public IActionResult Add(Product product, int? NewMaDM, string NewCategoryName)
         {

@@ -16,8 +16,8 @@ namespace BT3_Nhom3_23WebC.ViewComponents
 
         public IViewComponentResult Invoke()
         {
-            // Lấy danh sách sản phẩm (ví dụ 5 sản phẩm đầu)
-            var products = _productRepo.GetAllProducts().Take(5).ToList();
+            // Lấy danh sách sản phẩm (ví dụ 6 sản phẩm đầu)
+            var products = _productRepo.GetAllProducts().Take(6).ToList();
             return View(products);
         }
     }

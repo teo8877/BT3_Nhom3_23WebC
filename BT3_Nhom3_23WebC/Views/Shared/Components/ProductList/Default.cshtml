@@ -1,13 +1,14 @@
 ﻿@model IEnumerable<BT3_Nhom3_23WebC.Models.Product>
 
-<h3 style="color:#c8ffb0; margin-bottom:20px;">Danh sách sản phẩm</h3>
+<h3 style="color:#c8ffb0; margin-bottom:20px;">Weekly Special</h3>
 <div class="product_gallery">
     @foreach (var p in Model)
     {
         <div class="product_box">
             <img src="@p.HinhAnh" alt="@p.TenSP" />
-            <h3>@p.TenSP</h3>
-            <p class="product_price">@p.DonGia VNĐ</p>
+            <h3> @p.TenSP</h3>
+            <p class="product_price">Giá: @p.DonGia </p>
+            <p class="product_price">KM: @p.DonGiaKhuyenMai </p>
             <p class="add_to_cart">
                 <a href="@Url.Action("Index", "ProductDetail", new { id = p.MaSP })">Chi tiết</a>
                 <a href="@Url.Action("Index", "ShoppingCart", new { id = p.MaSP })">Thêm vào giỏ</a>

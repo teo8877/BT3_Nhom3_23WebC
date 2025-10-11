@@ -1,10 +1,17 @@
 ﻿@model BT3_Nhom3_23WebC.Models.Product
 
 @{
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
     ViewData["Title"] = "Thêm sản phẩm";
+<<<<<<< HEAD
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 
     var imageList = new List<string> {
+=======
+
+    var imageList = new List<string>
+    {
+>>>>>>> origin/mnhat
         "/images/product/01.jpg",
         "/images/product/02.jpg",
         "/images/product/03.jpg",
@@ -18,6 +25,7 @@
 
 <h2>Thêm mới sản phẩm</h2>
 
+<<<<<<< HEAD
 <!-- Hiển thị lỗi tổng hợp -->
 <div asp-validation-summary="ModelOnly" style="color:red"></div>
 
@@ -80,3 +88,78 @@
     <partial name="_ValidationScriptsPartial" />
 }
 
+=======
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+<form asp-action="Add" method="post">
+    <div class="mb-3">
+        <label asp-for="MaSP" class="form-label"></label>
+        <input asp-for="MaSP" class="form-control" />
+        <span asp-validation-for="MaSP" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="TenSP" class="form-label"></label>
+        <input asp-for="TenSP" class="form-control" />
+        <span asp-validation-for="TenSP" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DonGia" class="form-label"></label>
+        <input asp-for="DonGia" type="number" class="form-control" />
+        <span asp-validation-for="DonGia" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="DonGiaKhuyenMai" class="form-label"></label>
+        <input asp-for="DonGiaKhuyenMai" type="number" class="form-control" />
+        <span asp-validation-for="DonGiaKhuyenMai" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="HinhAnh" class="form-label"></label>
+        <select asp-for="HinhAnh" class="form-control">
+            <option value="">-- Chọn hình ảnh --</option>
+            <option value="/images/product/01.jpg">01.jpg</option>
+            <option value="/images/product/02.jpg">02.jpg</option>
+            <option value="/images/product/03.jpg">03.jpg</option>
+        </select>
+        <span asp-validation-for="HinhAnh" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MoTa" class="form-label"></label>
+        <textarea asp-for="MoTa" class="form-control"></textarea>
+        <span asp-validation-for="MoTa" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="LoaiSP" class="form-label"></label>
+        <input asp-for="LoaiSP" class="form-control" />
+        <span asp-validation-for="LoaiSP" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="MaDM" class="form-label">Danh mục</label>
+        <select asp-for="MaDM" asp-items="ViewBag.Categories" class="form-control">
+            <option value="">-- Chọn danh mục có sẵn --</option>
+        </select>
+        <span asp-validation-for="MaDM" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Danh mục mới (nếu chưa có)</label>
+        <input type="text" name="NewMaDM" class="form-control mb-1" placeholder="Nhập mã danh mục mới" />
+        <input type="text" name="NewCategoryName" class="form-control" placeholder="Nhập tên danh mục mới" />
+    </div>
+
+
+
+
+    <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
+>>>>>>> origin/mnhat

@@ -16,7 +16,7 @@ namespace BT3_Nhom3_23WebC.DAL
         public List<Product> GetAllProducts()
         {
             var products = new List<Product>();
-            string sql = "SELECT MaSP, TenSP, DonGia, DonGiaKhuyenMai, HinhAnh, MoTa, LoaiSP FROM Products";
+            string sql = "SELECT MaSP, TenSP, DonGia, DonGiaKhuyenMai, HinhAnh, MoTa, LoaiSP FROM Product_Test";
             //tao 1 doi tuong tu SqlConnection de doc va dam bao ket noi do tu dong dong sau khi su dung xong
             using (SqlConnection connection = new SqlConnection(_connectionString))
             {
@@ -74,5 +74,23 @@ namespace BT3_Nhom3_23WebC.DAL
                 }
             }
         }
+        public bool TestConnection()
+        {
+            using (SqlConnection connection = new SqlConnection(_connectionString))
+            {
+                try
+                {
+                    connection.Open();
+                    Console.WriteLine("✅ Kết nối thành công!");
+                    return true;
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("❌ Lỗi kết nối: " + ex.Message);
+                    return false;
+                }
+            }
+        }
+
     }
 }

@@ -30,7 +30,7 @@ namespace BT3_Nhom3_23WebC.Models
 
         [Required(ErrorMessage = "Loại sản phẩm không được để trống")]
         [StringLength(50, ErrorMessage = "Loại sản phẩm tối đa 50 ký tự")]
-        public string LoaiSP { get; set; }
+        public string? LoaiSP { get; set; }
 
         public int MaDM { get; set; }
     }

@@ -17,6 +17,7 @@ builder.Services.AddHttpContextAccessor();//cho phep truy cap HttpContext trong 
 //create csdl: Tao Migration(kich ban DB) Add.Migration InitialCreate, Apply: Update-Database
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddSingleton<ProductRepository>();
 
 //DI for AddStaticAssets
 //DI cau 2;
@@ -46,7 +47,7 @@ app.UseAuthorization();
 // Đọc danh sách sản phẩm từ db.json qua Middleware
 //app.UseMiddleware<ProductDbMiddleware>(Path.Combine(app.Environment.ContentRootPath, "db.json"));
 
-app.MapStaticAssets();
+//app.MapStaticAssets();
 
 // Routing cho Area (Admin)
 app.MapControllerRoute(

@@ -120,6 +120,18 @@ public class ProductRepository
         }
         return danhMucs;
     }
+    // Thêm phương thức để thêm danh mục mới
+    public void AddDanhMuc(int maDM, string tenDM)
+    {
+        string sql = "INSERT INTO DanhMuc(MaDM, TenDM) VALUES(@MaDM, @TenDM)";
+        using var conn = new SqlConnection(_connectionString);
+        using var cmd = new SqlCommand(sql, conn);
+        cmd.Parameters.AddWithValue("@MaDM", maDM);
+        cmd.Parameters.AddWithValue("@TenDM", tenDM);
+        conn.Open();
+        cmd.ExecuteNonQuery();
+    }
+
 
 
 }

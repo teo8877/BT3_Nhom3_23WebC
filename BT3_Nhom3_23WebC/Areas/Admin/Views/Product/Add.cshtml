@@ -69,16 +69,20 @@
     </div>
 
     <div class="mb-3">
-        <label asp-for="MaDM" class="form-label"></label>
+        <label asp-for="MaDM" class="form-label">Danh mục</label>
         <select asp-for="MaDM" asp-items="ViewBag.Categories" class="form-control">
-            <option value="">-- Chọn danh mục --</option>
+            <option value="">-- Chọn danh mục có sẵn --</option>
         </select>
         <span asp-validation-for="MaDM" class="text-danger"></span>
     </div>
+
     <div class="mb-3">
         <label class="form-label">Danh mục mới (nếu chưa có)</label>
-        <input type="text" name="NewCategory" class="form-control" placeholder="Nhập tên danh mục mới" />
+        <input type="text" name="NewMaDM" class="form-control mb-1" placeholder="Nhập mã danh mục mới" />
+        <input type="text" name="NewCategoryName" class="form-control" placeholder="Nhập tên danh mục mới" />
     </div>
+
+
 
 
     <button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
